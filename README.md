@@ -101,5 +101,6 @@ npx expo install react-native-web@~0.18.10 react-dom@18.2.0 @expo/webpack-config
 ```sh
 npm install @react-navigation/native-stack
 npm install @react-navigation/bottom-tabs
+npm install @react-navigation/native
 npm i react-native-vector-icons
 ```
