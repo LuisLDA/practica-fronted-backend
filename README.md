@@ -25,7 +25,7 @@ npm install @types/express
 
 **Libreria cors**
 ```sh
-npm install cors`
+npm install cors
 npm install @types/cors
 ```
 
@@ -50,7 +50,7 @@ En el archivo tsconfig.json podemos descomentar las siguientes configuraciones
 "noUnusedLocals": true, 
 "noUnusedParameters": true,   
 "noImplicitReturns": true,      
-"noFallthroughCasesInSwitch": true,
+"noFallthroughCasesInSwitch": true
 ```
 
 ## Pasar de TS a JS
@@ -71,10 +71,35 @@ npm run tsc
 npm run dev
 ```
 
+# Front-end
 
+Instalar expo de forma global para ejecutar la aplicación móvil 
+```sh
+npm install -g expo-cli
+```
 
+Iniciar un proyecto con expo
+```sh
+expo init [nombre app]
+```
 
+Para correr el proyecto, nos dirigimos al directorio y corremos algunos de los comandos
+```sh 
+- cd app-ejemplo
+- yarn start # you can open iOS, Android, or web from here, or run them directly with the commands below.
+- yarn android
+- yarn ios # requires an iOS device or macOS for access to an iOS simulator
+- yarn web
+```
 
+Debemos instalar las siguientes librerías para ver en la web
+```sh 
+npx expo install react-native-web@~0.18.10 react-dom@18.2.0 @expo/webpack-config@^18.0.1
+```
 
-
-
+## Librerias React Native
+```sh
+npm install @react-navigation/native-stack
+npm install @react-navigation/bottom-tabs
+npm i react-native-vector-icons
+```
