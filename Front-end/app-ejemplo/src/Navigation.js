@@ -15,12 +15,12 @@ const Navigation = () => {
                 tabBarIcon: ({color, size}) => {
                     <MaterialCommunityIcons name="home" color={color} size={size} />
                 },
-            }}>   
+            }}>
             </Tab.Screen>
             <Tab.Screen name="List" component={ListComponent} options={{
                 tabBarLabel: "Listado",
                 tabBarIcon: ({color, size}) => {
-                    <MaterialCommunityIcons name="list" color={color} size={size} />
+                    <MaterialCommunityIcons name="clipboard-list" color={color} size={size} />
                 },
             }}></Tab.Screen> 
         </Tab.Navigator>

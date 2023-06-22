@@ -11,6 +11,9 @@ const ProfileCard = () => {
     }
 
     const twitter = <Icon name="twitter" size={30} color={"black"} />
+    const facebook = <Icon name="facebook" size={30} color={"black"}/>
+    const instagram = <Icon name="instagram" size={30} color={"black"}/>
+    const linkedin = <Icon name="linkedin" size={30} color={"black"}/>
     
     return (
         <View style={styles.container}>
@@ -24,6 +27,15 @@ const ProfileCard = () => {
             <View style={styles.buttonContainer}>
                 <Text style={{color: "blue"}} onPress={() => Linking.openURL("https://www.twitter.com")}>
                     {twitter}
+                </Text>
+                <Text style={{color: "blue"}} onPress={() => Linking.openURL("https://www.facebook.com")}>
+                    {facebook}
+                </Text>
+                <Text style={{color: "blue"}} onPress={() => Linking.openURL("https://www.instagram.com")}>
+                    {instagram}
+                </Text>
+                <Text style={{color: "blue"}} onPress={() => Linking.openURL("https://www.linkedin.com")}>
+                    {linkedin}
                 </Text>
             </View>
         </View>
@@ -52,7 +64,15 @@ const styles = StyleSheet.create({
         borderColor: "white"
     },
     name: {
-        
+        marginTop: 15,
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+    buttonContainer: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        marginTop: 20, 
+        width: "60%"
     }
     
 });

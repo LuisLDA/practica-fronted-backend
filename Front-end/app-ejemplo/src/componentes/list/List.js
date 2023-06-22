@@ -4,8 +4,9 @@ import Task from "./Task";
 
 const ListComponent = () => {
 
-    const [taskItem, setTaskItems] = useState([]);
+    const [taskItems, setTaskItems] = useState([]);
 
+    // Para notificar al componente que existe un cambio
     useEffect(() => {
         fetchData();
     }, [])
@@ -14,30 +15,30 @@ const ListComponent = () => {
         try {
             const response = await fetch('https://api.unsplash.com/photos/?client_id=ZXjOAAdwefwfYGtyhjJmAerkWnGDxNNnEwTlnHkSqk4');
             const jsonData = await response.json();
+            console.log(jsonData)
             setTaskItems(jsonData)
         } catch (e) {
             console.error("error", e)
         }
     }
 
-    const Item = ({item, i}) => {
+    const Item = ({task, i}) => {
         return (
-            <TouchableOpacity style={styles.peritem} key={i} onPress={() => {getProfile(item)}}>
-                <Task task={item} />
+            <TouchableOpacity style={styles.peritem} key={i} onPress={() => {getProfile(task)}}>
+                <Task task={task} />
             </TouchableOpacity>
         )
     }
 
-    return (taskItem &&
+    return (taskItems &&
         <View style={styles.container}>
             <View style={styles.taskWrapper}>
                 <Text style={styles.sectionTitle}>Se listan los perfiles</Text>
                 <View style={styles.items}>
                     <FlatList
-                        data={taskItem}
-                        renderItem={({item, i}) => <item task={item} i={i} />}
+                        data={taskItems}
+                        renderItem={({item, i}) => <Item task={item} i={i} />}
                     >
-
                     </FlatList>
                 </View>
             </View>
@@ -47,7 +48,9 @@ const ListComponent = () => {
 }
 
 const styles = StyleSheet.create({
-
+    container: {
+        margin: 15
+    }
 })
 
 export default ListComponent;
