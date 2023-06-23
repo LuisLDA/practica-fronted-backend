@@ -7,7 +7,7 @@ const ProfileCard = () => {
     const user = {
         avatar: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
         coverPhoto: "https://wallpapers.com/images/hd/profile-picture-background-10tprnkqwqif4lyv.jpg",
-        name: "Marvin Salcedo"
+        name: "LuisLDA"
     }
 
     const twitter = <Icon name="twitter" size={30} color={"black"} />
