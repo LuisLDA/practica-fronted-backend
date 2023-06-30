@@ -17,7 +17,7 @@ const OpenAiRest = () => {
     const fetchData = async () => {
         try {
             const completion = await openai.createCompletion({
-                model: "gpt-3.5-turbo",
+                model: "gpt-4",
                 messages: [
                     { "role": "system", "content": "Eres un convertidor binario todos los textos que te den tu daras su equivalente en binario" },
                     { "role": "user", "content": pregunta },
@@ -25,7 +25,7 @@ const OpenAiRest = () => {
                 temperature: 0.6,
             });
             console.log(completion.data.choices[0].text);
-            setRespuestaModalText(completion.data.choices[0].text);
+            setRespuestaModalText(completion.data.choices[0].text + "-"+ completion.data.usage.total_tokens);
             setRespuestaModalVisible(true);
         } catch (error) {
             console.log(error);
