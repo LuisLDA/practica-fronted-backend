@@ -5,15 +5,16 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const ProfileCard = () => {
 
     const user = {
-        avatar: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-        coverPhoto: "https://wallpapers.com/images/hd/profile-picture-background-10tprnkqwqif4lyv.jpg",
-        name: "LuisLDA"
+        avatar: "https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg",
+        coverPhoto: "https://cdn.pixabay.com/photo/2018/09/19/23/03/sunset-3689760_1280.jpg",
+        name: "Luis Aimacaña"
     }
 
     const twitter = <Icon name="twitter" size={30} color={"black"} />
     const facebook = <Icon name="facebook" size={30} color={"black"} />
     const instagram = <Icon name="instagram" size={30} color={"black"} />
     const linkedin = <Icon name="linkedin" size={30} color={"black"} />
+    const tiktok = <Icon name="tiktok" size={30} color={"black"} />
 
     return (
         <View style={styles.container}>
@@ -37,6 +38,10 @@ const ProfileCard = () => {
                 <Text style={{ color: "blue" }} onPress={() => Linking.openURL("https://www.linkedin.com")}>
                     {linkedin}
                 </Text>
+
+                <Text style={{ color: "blue" }} onPress={() => Linking.openURL("https://www.tiktok.com")}>
+                    {tiktok}
+                </Text>
             </View>
         </View>
     )
@@ -44,7 +49,7 @@ const ProfileCard = () => {
 
 const styles = StyleSheet.create({
     container: {
-        width: "50%",
+        width: "100%",
         alignItems: "center"
     },
     coverPhoto: {
