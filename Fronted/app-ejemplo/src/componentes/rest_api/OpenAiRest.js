@@ -25,7 +25,7 @@ const OpenAiRest = () => {
                 temperature: 0.6,
             });
             console.log(completion.data.choices[0].text);
-            setRespuestaModalText(completion.data.choices[0].message.content + "- Tokens:"+ completion.data.usage.total_tokens);
+            setRespuestaModalText(completion.data.choices[0].message.content + "- Tokens:" + completion.data.usage.total_tokens);
             setRespuestaModalVisible(true);
         } catch (error) {
             console.log(error);
