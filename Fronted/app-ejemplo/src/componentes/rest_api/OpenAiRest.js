@@ -16,8 +16,8 @@ const OpenAiRest = () => {
 
     const fetchData = async () => {
         try {
-            const completion = await openai.createCompletion({
-                model: "gpt-4",
+            const completion = await openai.ChatCompletion.create({
+                model: "gpt-3.5-turbo",
                 messages: [
                     { "role": "system", "content": "Eres un convertidor binario todos los textos que te den tu daras su equivalente en binario" },
                     { "role": "user", "content": pregunta },
