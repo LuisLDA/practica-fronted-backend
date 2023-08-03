@@ -8,7 +8,7 @@ const NameRest = () => {
     const [data, setData] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
 
-    const serverUrl = "https://luislda-cautious-space-waddle-xx56rvvg475c9977-3000.preview.app.github.dev";
+    const serverUrl = "https://luislda-didactic-meme-p9jv7pp5qg6fx65-3000.preview.app.github.dev/";
 
     const fetchData = async () => {
         try {

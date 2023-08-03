@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View, Modal } from "react-native";
 import { Configuration, OpenAIApi } from "openai";
+import DocumentPicker from "react-native-document-picker"
+
 
 const OpenAiRest = () => {
 
@@ -13,6 +15,7 @@ const OpenAiRest = () => {
     const [pregunta, setPregunta] = useState('');
     const [respuestaModalVisible, setRespuestaModalVisible] = useState(false);
     const [respuestaModalText, setRespuestaModalText] = useState('');
+    const [pdfUri, setPdfUri] = useState(null); // Agregar un estado para guardar la uri del pdf seleccionado
 
     const fetchData = async () => {
         try {
@@ -32,6 +35,48 @@ const OpenAiRest = () => {
         }
     };
 
+    // Agregar una función para seleccionar un pdf usando react-native-document-picker
+    const selectPdf = async () => {
+        try {
+            // Abrir el selector de documentos y filtrar solo los archivos pdf
+            const res = await DocumentPicker.pick({
+                type: [DocumentPicker.types.pdf],
+            });
+            // Guardar la uri del pdf seleccionado en el estado
+            setPdfUri(res.uri);
+        } catch (err) {
+            // Manejar cualquier excepción (si la hay)
+            if (DocumentPicker.isCancel(err)) {
+                // Si el usuario canceló la selección del documento
+                console.log('Canceled');
+            } else {
+                // Por error desconocido
+                console.log('Unknown Error: ' + JSON.stringify(err));
+            }
+        }
+    };
+
+
+    const uploadPdf = async () => {
+        try {
+          const formData = new FormData();
+          formData.append("file", {
+            uri: pdfUri,
+            name: "file.pdf",
+            type: "application/pdf",
+          });
+          formData.append("question", "¿Cuál es la respuesta a la vida, el universo y todo lo demás?");
+          const response = await fetch("http://localhost:3000/upload", {
+            method: "POST",
+            body: formData,
+          });
+          const data = await response.json();
+          console.log(data);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
     return (
         <View style={styles.container}>
             <Text style={styles.titleContainer}>
@@ -43,6 +88,10 @@ const OpenAiRest = () => {
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.buttonServer} onPress={fetchData}>
                         <Text>Enviar Datos</Text>
+                    </TouchableOpacity>
+                    {/* Agregar un botón para seleccionar un pdf */}
+                    <TouchableOpacity style={styles.buttonServer} onPress={selectPdf}>
+                        <Text>Seleccionar PDF</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -59,6 +108,13 @@ const OpenAiRest = () => {
                         <Text style={styles.modalTitle}>Información recibida</Text>
                         <Text style={styles.titleModal}>Respuesta</Text>
                         <Text>{respuestaModalText}</Text>
+                        {/* Agregar un componente para mostrar el pdf usando react-native-pdf */}
+                        {pdfUri && (
+                            <Pdf
+                                source={{ uri: pdfUri }}
+                                style={{ flex: 1, width: Dimensions.get('window').width }}
+                            />
+                        )}
                         <View style={styles.buttonContainer}>
                             <TouchableOpacity style={styles.buttonServer} onPress={() => setRespuestaModalVisible(!respuestaModalVisible)}>
                                 <Text>Cerrar</Text>
